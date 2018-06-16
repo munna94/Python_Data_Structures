@@ -351,21 +351,25 @@ class DoublyLinkedList:
     def insertAtSpecific(self,data,position):
         lengthOfList=self.length()
         if self.head is None:
-            print "no existing node. adding new node.... added "
+            print ("no existing node. adding new node.... added ")
         elif(position>lengthOfList  or position==0):
-            print "position is not correct"
+            print ("position is not correct")
         else:
-            newNode=Node(data)
+            newNode=Node(data)          
             cur=self.head
             count=1
             while(cur!=None):
                 if (count==position):
-                    cur=cur.next
+                    nxt=cur.next
                     cur.next=newNode
                     newNode.prev=cur
-                    newNode.next=cur
+                    newNode.next=nxt
                     break
+
                 else:
+                    if(position==lengthOfList):
+                        self.insertDoubly(data)
+                        break
                     cur=cur.next
                     count+=1
                     
@@ -392,7 +396,7 @@ ll=dl.length()
 print "length is :",ll
 print "-----------"
 dl.insertAtSpecific('munna',8)
-print dl.displayDoubly()
+dl.displayDoubly()
 
             
 
