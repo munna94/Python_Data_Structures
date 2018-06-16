@@ -1,4 +1,4 @@
 # pythponLinkedList
 
-Implemenation of all linkedList in python
+Implemenation of singly and doubly linkedList in python
 
