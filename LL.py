@@ -373,7 +373,23 @@ class DoublyLinkedList:
                     cur=cur.next
                     count+=1
                     
-                    
+    
+	#---reverse Doubly  -----------
+    def reverseDoubly(self):
+        if self.head is None:
+            print ("there is no node to reverse. sorry...")
+        else:
+            cur=self.head
+            temp=None
+            while(cur!=None):
+                temp=cur.prev
+                cur.prev=cur.next
+                cur.next=temp
+                cur=cur.prev
+                
+            #cur.next=cur.prev
+            #cur.prev=None
+            self.head=temp.prev
                 
             
             
@@ -396,6 +412,7 @@ ll=dl.length()
 print "length is :",ll
 print "-----------"
 dl.insertAtSpecific('munna',8)
+dl.reverseDoubly()
 dl.displayDoubly()
 
             
