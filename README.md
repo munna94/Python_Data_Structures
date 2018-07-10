@@ -1,4 +1,4 @@
-# pythponLinkedList
+# python data structure
 
 Implementation of singly and doubly linkedList in python
 
