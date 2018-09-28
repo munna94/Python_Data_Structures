@@ -82,39 +82,33 @@ def mergesort(listValue):
     return listValue
 
 
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
+#--------quick sort implementation-------------
+def partition(l):
+    length=len(l)
+    pivot=l[length-1]
+    left=[]
+    right=[]
+    for i in range(length-1):
+        el=l[i]
+        if(el<=pivot):
+            left+=[el]
+        else:
+            right+=[el]
+    return (left,pivot,right)
+def quick_sort(a):
+    if (len(a)<=1):
+        return a
+    else:
+        left,pivot,right=partition(a)
+        left_sort=quick_sort(left)
+        right_sort=quick_sort(right)
+        return left_sort+[pivot]+right_sort
+print quick_sort([23,1,-3,450,23,-1,220])
 
 
 
 
-# In[ ]:
+#----------end of quick_sort implementation--------------
 
 
 
