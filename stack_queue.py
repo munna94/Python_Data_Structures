@@ -25,6 +25,7 @@ class Stack:
         if len(self.q1) is 0:
             print("stack is underflow...")
         else:
+	    self.size-=1
             #pop first element from queue and it will be the last pushed element
             ele=self.q1.pop(0)
             return ele
