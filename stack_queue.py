@@ -106,3 +106,45 @@ stack.display()
                 
         
                
+#implement queue using two stack
+class PushCostlyQueue:
+    def __init__(self):
+        self.s1=[]
+        self.s2=[]
+        self.size=0
+    def enQueue(self,newElement):
+        #pop all element from s1 to s2 
+        while len(self.s1) is not 0:
+            ele=self.s1.pop()#pop from last b/c stack always pop last inserted element first
+            self.s2.append(ele)
+            # s1 will be [] and s2 will be [1,2,3,4] and top will be at 4
+        # now add new element to s1
+        self.s1.append(newElement)#now s1 is [5] and s2 is [1,2,3,4]
+        # now pop all element from s2 and push to s1 
+        while len(self.s2) is not 0:
+            ele=self.s2.pop()#pop from last b/c stack always pop from last
+            self.s1.append(ele)
+        #till here s1 will be [5,4,3,2,1] and s2 [] and top will be at 1 at it will get first pop b/c queue pop first inserted ele first
+    def deQueue(self):
+        if len(self.s1) is 0:
+            print("queue is underflow..")
+        else:
+            poppedEle=self.s1.pop()
+            return poppedEle
+    def display(self):
+        if len(self.s1) is 0:
+            print("no element exists in the queue..")
+        else:
+            while len(self.s1) is not 0:
+                ele=self.s1.pop()# pop from last b/c stack always pop from last
+                print(ele)
+
+queue=PushCostlyQueue()
+queue.enQueue(10)
+queue.enQueue(100)
+queue.enQueue(1000)
+queue.enQueue(100000)
+ele=queue.deQueue()
+print("popped element from queue is ",ele)
+print("after dequeue element left is ")
+queue.display()
