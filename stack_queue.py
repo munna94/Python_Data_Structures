@@ -113,6 +113,7 @@ class PushCostlyQueue:
         self.s2=[]
         self.size=0
     def enQueue(self,newElement):
+	self.size+=1
         #pop all element from s1 to s2 
         while len(self.s1) is not 0:
             ele=self.s1.pop()#pop from last b/c stack always pop last inserted element first
@@ -129,6 +130,7 @@ class PushCostlyQueue:
         if len(self.s1) is 0:
             print("queue is underflow..")
         else:
+	    self.size-=1
             poppedEle=self.s1.pop()
             return poppedEle
     def display(self):
@@ -148,3 +150,52 @@ ele=queue.deQueue()
 print("popped element from queue is ",ele)
 print("after dequeue element left is ")
 queue.display()
+
+
+
+#implement pop costly operation for queue implementation
+class PopCostlyQueue:
+    def __init__(self):
+        self.s1=[]
+        self.s2=[]
+        self.size=0
+    def enQueue(self,newElement):
+        self.size+=1
+        self.s1.append(newElement)# till here s1 is [1,2,3,4] and s2 is []
+    def deQueue(self):
+        if len(self.s1) is 0:
+            print("queue is underflow...")
+        else:
+            self.size-=1
+            #pop element from s1 to s2 from last as its stack propery and finaly return first element of s1
+            #which will be last pop from s2
+            while len(self.s1) is not 1:
+                ele=self.s1.pop()#pop from last b/c its stack property
+                # push to s2
+                self.s2.append(ele)# till here s2 is [5,4,3,2] and s1 is [1]
+            # this will be finally return
+            returnPopEle=self.s1.pop()#s1[] and s2[5,4,3,2]
+            #now again pop from s2 and push to s1
+            while len(self.s2) is not 0:
+                ele=self.s2.pop()#pop from last
+                #push to s1
+                self.s1.append(ele)
+            #till here s1 [2,3,4,5] and s2 []
+            return returnPopEle
+    def display(self):
+        if len(self.s1) is 0:
+            print("no element exists..")
+        else:
+            print(self.s1)
+queue=PopCostlyQueue()
+queue.enQueue(12)
+queue.enQueue(13)
+queue.enQueue(14)
+queue.enQueue(15)
+print("before pop ..")
+queue.display()
+ele=queue.deQueue()
+print("poped ele is ",ele)#it will pop firsted inserted element b/c its queue propert
+print("after dequeue size is ",queue.size)
+            
+        
