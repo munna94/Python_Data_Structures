@@ -197,5 +197,59 @@ queue.display()
 ele=queue.deQueue()
 print("poped ele is ",ele)#it will pop firsted inserted element b/c its queue propert
 print("after dequeue size is ",queue.size)
+
+
+class GetminOfStack:
+    def __init__(self):
+        self.mainStack=[]
+        self.supportingStack=[]
+    def push(self,ele):
+        if len(self.mainStack) is 0:
+            self.mainStack.append(ele)
+            self.supportingStack.append(ele)
+        else:
+            #check if new element is less than supporting stack topmost element
+            if(ele <self.supportingStack[-1]):
+                #then new element will also get inserted to supporting stack 
+                self.supportingStack.append(ele)
+                #also add to main stack
+                self.mainStack.append(ele)
+            else:
+                #only push to main stack
+                self.mainStack.append(ele)
+                
+    def pop(self):
+        if len(self.mainStack) is 0:
+            print("print stack is underflow..")
+        else:
+            ele=0
+            poppedFromMain=self.mainStack[-1]
+            poppedFromMSupporting=self.supportingStack[-1]
+            #if both equal then then also remove from supporting stack
+            if poppedFromMain is poppedFromMSupporting:
+                ele1=self.mainStack.pop();
+                self.supportingStack.pop()
+                ele=ele1
+            else:
+                #only pop from main stack
+                ele=self.mainStack.pop();
+        return ele
+                
+    def getMin(self):
+        if len(self.supportingStack) is 0:
+            print("stack ie empty...")
+        else:
+            #get the last inserted element which will min among all available elemet in stack
+            minVal =self.supportingStack.pop()
+            return minVal
+minStack=GetminOfStack()
+minStack.push(12)
+minStack.push(120)
+minStack.push(1200)
+minStack.push(-120)
+minStack.pop()
+minval=minStack.getMin()
+print("min val is ",minval)
+            
             
         
