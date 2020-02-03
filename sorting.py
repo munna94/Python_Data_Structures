@@ -79,7 +79,7 @@ def mergesort(listValue):
             listValue[k]=right[j]
             j=j+1
             k=k+1
-    return listValue
+    return listValue#this list is pass by rerefence so its changed in original list
 
 
 #--------quick sort implementation-------------
