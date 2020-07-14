@@ -2,8 +2,8 @@
 # coding: utf-8
 
 # In[8]:
-
-# bubble sort
+#best,average,worst
+# bubble sort o(n),o(n^2),o(n^2)
 def bubbleSort(a):
     for i in range(len(a)-1):
         for j in range(len(a)-i-1):
@@ -12,7 +12,7 @@ def bubbleSort(a):
                 
     return a
 #sortedlist=bubbleSort()
-#selection sort
+#selection sort Ω(n^2)	θ(n^2)	O(n^2)
 
 def selectionSort(a):
     for i in range(0,len(a)-1):#because last element will be sorted 
@@ -23,7 +23,7 @@ def selectionSort(a):
         if min !=i:
             a[i],a[min]=a[min],a[i]
     return a
-#insertion sort
+#insertion sort Ω(n)	θ(n^2)	O(n^2)
 
 def insertionSort(a):
     for i in range(1,len(a)):
@@ -52,7 +52,7 @@ def insertionSort_shifting(a):
     return a
 
 
-#---merge sort using recursion--------
+#---merge sort using recursion--------Ω(n log(n))	θ(n log(n))	O(n log(n))
 def mergesort(listValue):
     if len(listValue)>1:
         mid=len(listValue)//2
@@ -82,7 +82,7 @@ def mergesort(listValue):
     return listValue#this list is pass by rerefence so its changed in original list
 
 
-#--------quick sort implementation-------------
+#--------quick sort implementation-------------Ω(n log(n))	θ(n log(n))	O(n^2)
 def partition(l):
     length=len(l)
     pivot=l[length-1]
