@@ -1,4 +1,4 @@
-#implement stack with push costly means pushing element will be 0(n) inserting to new queue and then finaly copy old
+#implement stack using two queue with push costly means pushing element will be 0(n) inserting to new queue and then finaly copy old
 #queue element to new queue
 class Stack:
     def __init__(self):
